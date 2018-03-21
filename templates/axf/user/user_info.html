@@ -1,0 +1,24 @@
+{% extends 'axf/base/base.html' %}
+{% load staticfiles %}
+
+{% block personResource %}
+    <link rel="stylesheet" href="{% static 'user/css/user_info.css' %}">
+    <script type="text/javascript" src="{% static 'user/js/user_info.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <form action="{% url 'axf:do_user_info' %}" method="post" onsubmit="return check()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <span>用户名:</span><input id="username" type="text" name="name" placeholder="{{ u_name }}"><span id="is_username"></span>
+        <br>
+        <span>邮箱:</span><input type="text" name="email" placeholder="{{ u_email }}">
+        <br>
+        <span>手机:</span><input id="user_phone" type="text" name="phone" placeholder="{{ u_phone }}"><span id="is_phone"></span>
+        <br>
+        <img id="re_img" src="{{ u_icon }}" alt="">
+        <br>
+        <span>头像:</span><input type="file" name="re_icon" id="re_icon">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}

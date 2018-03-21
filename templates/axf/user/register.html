@@ -1,0 +1,29 @@
+{% extends 'axf/base/base.html' %}
+{% load staticfiles %}
+
+{% block personResource %}
+    <link rel="stylesheet" href="{% static 'user/css/register.css' %}">
+    <script type="text/javascript" src="{% static 'user/js/register.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user/js/md5.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="user_register">
+        <form onsubmit="return check()" action="{% url 'axf:do_register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <span>用户名:</span><input id="register_username" type="text" name="username"><span id="user_name_check"></span>
+            <br>
+            <span>密码:</span><input id="register_password" type="password" name="password"><span id="password_check"></span>
+            <br>
+            <span>确认密码:</span><input id="register_password_confirm" type="password">
+            <br>
+            <span>邮箱:</span><input type="text" name="email">
+            <br>
+            <span>电话:</span><input type="text" name="phone">
+            <br>
+            <span>头像:</span><input type="file" name="icon">
+            <br>
+            <input type="submit" value="注册">
+        </form>
+    </div>
+{% endblock %}

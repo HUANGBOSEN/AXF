@@ -1,0 +1,70 @@
+{% extends 'axf/main/main.html' %}
+{% load staticfiles %}
+
+{% block mainResource %}
+    <link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="user_detail container-fluid">
+
+        <div class="row1">
+            <div class="col-xs-4 ">
+                <div class="user_icon">
+                    <img src="{{ user_icon }}" alt="头像">
+                </div>
+            </div>
+            <div class="col-xs-4 ">
+                {% if is_login %}
+                    <div class="user_login"><a href="{% url 'axf:user_info' %}">{{ username }}</a></div>
+                    {% else %}
+                    <div class="user_login"><a href="{% url 'axf:login' %}">{{ username }}</a></div>
+                {% endif %}
+                
+                <div class="user_grade"><img src="" alt="焱">等级</div>
+            </div>
+            <div class="col-xs-4 ">
+                {% if is_login %}
+                {% else %}
+                    <div class="register"><a href="{% url 'axf:register' %}">注册</a></div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="col-xs-12 ">商品收藏</div>
+        </div>
+
+        <div class="row3">
+            <div class="col-xs-6 ">我的订单</div>
+            <div class="col-xs-6 ">查看全部订单</div>
+        </div>
+
+        <div class="row4">
+            <div class="col-xs-3 ">待付款</div>
+            <div class="col-xs-3 ">待收货</div>
+            <div class="col-xs-3 ">待评价</div>
+            <div class="col-xs-3 ">退款/售后</div>
+        </div>
+
+        <div class="row5">
+            <div class="col-xs-4 ">积分商城</div>
+            <div class="col-xs-4 ">优惠券</div>
+            <div class="col-xs-4 ">收货地址</div>
+        </div>
+
+        <div class="row6">
+            <div class="col-xs-4 col-xs-offset-2 ">客服/反馈</div>
+            <div class="col-xs-4 ">关于我们</div>
+        </div>
+
+        <div class="row7">
+            {% if is_login %}
+                <div class="col-xs-12 "><a href="{% url 'axf:logout' %}">退出当前账号</a></div>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}
+
