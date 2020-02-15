@@ -6,7 +6,7 @@ from django.db import models
 class Wheel(models.Model):
     name = models.CharField(max_length=100)
     trackid = models.CharField(max_length=20)
-    img = models.CharField(max_length=209)
+    img = models.CharField(max_length=210)
 
     class Meta:
         db_table = 'axf_wheel'
